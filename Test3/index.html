@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, height=device-height , initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    <title></title>
+    <script src="AjaxCalls.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script>
+
+
+        Hadmaya = new Object();
+
+        $(document).ready(getHadmayotTitles(successTitlesCB, errorTitlesCB));
+
+        //Splash screen
+        //$(document).ready((function () {
+        //    setTimeout(hideSplash, 2000);
+        //}));
+
+
+        //function hideSplash() {
+        //    $.mobile.changePage("#main", "fade");
+        //}
+        //Splash screen
+
+        //$(document).bind('mobileinit', function ()
+        //{
+        //    $.mobile.loader.prototype.options.text = "loading";
+        //    $.mobile.loader.prototype.options.textVisible = "true";
+        //    $.mobile.loader.prototype.options.theme = "a";
+        //    $.mobile.loader.prototype.options.html = "";
+
+        //    $.mobile.loading("show", {
+        //        text: msgText,
+        //        textVisible: textVisible,
+        //        theme: theme,
+        //        textonly: textonly,
+        //        html: html
+        //    });
+        //}
+        //);
+
+        //Callback functions for AjaxCalls/myAjaxFunc
+        //function successCB(results) {
+
+        //    results = $.parseJSON(results.d)
+        //    tmpStr = "<div data-role='collapsible-set'>";
+        //    //<iframe class="player responsive-iframe" src="//retter.podiant.co/e/35d05181d3a152/embed/" height="150" frameborder="0"></iframe>
+        //    for (i = 0; i < results.length; i++) {
+        //        //var res = results[i].Url.split(":");
+        //        //tmpStr += "<div data-role='collapsible'><h3> " + results[i].Title + "</h3>" + "<p><iframe class='player responsive- iframe' src='" + results[i].Url + "' width='100%' frameborder='0'></iframe></p></div>";
+        //        tmpStr += "<div data-role='collapsible'><h3> " + results[i].Title + "</h3>" + "<p><audio controls> <source src='" + results[i].Url + "' type='" + results[i].MediaType + "'></audio controls></p></div>";
+        //    } tmpStr += "</div>"
+        //    document.getElementById("container").innerHTML = tmpStr;
+        //    $('#ProductFull').html(tmpStr);
+        //    $('[data-role=collapsible-set]').collapsibleset().trigger('create');
+        //}
+
+        ////-----------------------------------------------------------------------------
+        //// A Method for presenting the error, called on error
+        ////-----------------------------------------------------------------------------
+        //function errorCB(e) {
+        //    alert("I caught the exception : failed in myAjaxFunc \n The exception message is : " + e.responseText);
+        //}
+
+        //-----------------------------------------------------------------------------
+        //Callback function for AjaxCalls/getHadmayotTitles
+        function successTitlesCB(results) {
+            results = $.parseJSON(results.d)
+            str = "";
+            // var = results.split("/");
+            for (var i = 0; i < results.length; i++) {
+                str += '<li><a class="hadmayaMain" href="#hadmaya" id="' + (results[i].Title) + '">' +
+                    //'<img src="' + results[i].ImagePath + '"/>' +
+                    "<h3>" + results[i].Title + "</h3>" + "<p>ניסיון</p>" +
+                    //"<p> Price: " + results[i].Price + "</p>" +
+                    //"<p> Inventory: " + results[i].Inventory + "</p>" +
+                    "</a></li>";
+            };
+            $("#hadmayotList").html(str);
+            $("#hadmayotList").listview("refresh");
+        }
+
+        $(document).ready(function () {
+            $(document).on('click', 'a.hadmayaMain', function () {
+                Hadmaya.id = this.id;
+                var request = {
+                    id: Hadmaya.id
+                }
+                getHadmayaById(request, successHadmayaCB, errorHadmayaCB);
+            });
+        });
+
+        function errorTitlesCB(e) {
+            alert("I caught the exception : failed in errorTitlesCB \n The exception message is : " + e.responseText);
+        }
+
+
+        function successHadmayaCB(results)
+        {
+            
+            results = $.parseJSON(results.d)       
+            $("#hadmayaContent").empty();
+
+            str = "";
+            //str += "<h2> " + results.Title + "</h2>    <button style='text- align:center;>Play</button>";
+            
+           // str2 = "";
+            str += "<div><h2> " + results.Title + "</h2>" + "<audio controls> <source src='" + results.Url + "' type='" + results.MediaType + "'></audio controls></div>";
+            //$('#hadmayaContent').html(str);
+            //$.mobile.navigate("#hadmayaContent");
+
+           // var myaudio = new Audio(results.Url);
+           // myaudio.play();
+            $("#audioDiv").html(str);
+            //document.getElementById("audioDiv").innerHTML = str;
+           
+        }
+
+        function play(request) {
+            res = $.parseJSON(request.d)
+
+        }
+
+        function errorHadmayaCB(e) {
+            alert("I caught the exception : failed in getHadmayaById \n The exception message is : " + e.responseText);
+        }
+
+        function clearHadmaya() {
+            $('#hadmayaContent').empty();
+        }
+    </script>
+</head>
+<body>
+
+    <!--Splash screen page  -->
+    <!--<div data-role="page" data-theme="e" data-position="fixed" id="splash">
+        <div data-role="content">
+            <h1> <img src="Images/RetterLogo.png" style="left:50%; top:50%;" /></h1>
+        </div>
+    </div>-->
+    <!--/Splash screen page  -->
+    <!--Main page with titles  -->
+    <div data-role="page" data-theme="e" data-position="fixed" id="main">
+        <div data-role="header">
+            <h1><img src="Images/RetterLogo.png" style="height:50px;" /></h1>
+        </div>
+        <div data-role="content">
+            <ul id="hadmayotList" data-filter="true" data-role="listview" dir="rtl"></ul>
+            <div id="audioDiv" style="position:fixed; bottom:0;"></div>
+        </div><!-- /content -->
+        
+    </div><!--/Main page with titles  -->
+
+
+    <!--Hadmaya Page -->
+    <!--<div data-role="page" data-theme="e" data-position="fixed" id="hadmaya">
+        <div data-role="header">
+            <a href="#main" data-icon="home" data-rel="back" title="Home" style="height:20px; text-align:center;" onclick="clearHadmaya()"></a>
+            <h1><img src="Images/RetterLogo.png" style="height:50px;" /></h1>
+        </div>
+        <div data-role="content" id="hadmayaContent">
+        </div>--><!-- /content -->
+        <!--<div data-role="footer" data-position="fixed" id="footerForAll" data-id="audioFooter"></div>-->
+
+    <!--</div>-->
+    <!--/Hadmaya page-->
+
+
+</body>
+
+</html>
