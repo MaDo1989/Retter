@@ -11,7 +11,7 @@
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <link href="StyleSheet.css" rel="stylesheet" />
     <script>
 
 
@@ -155,8 +155,13 @@
     <!--/Splash screen page  -->
     <!--Main page with titles  -->
     <div data-role="page" data-theme="e" data-position="fixed" id="main">
-        <div data-role="header">
-            <h1><img src="Images/RetterLogo.png" style="height:50px;" /></h1>
+        <div data-role="panel" id="panel" data-position="right" data-display="overlay">
+          
+        <a href="http://www.retter.co.il">Retter Website</a>
+        </div><!-- /panel -->
+        <div data-role="header" data-position="fixed" class="header">  <!--Main header-->          
+            <h1><img src="Images/RetterLogo.png" id="logo"/></h1>
+            <a href="#panel" id="panelBTN"><i class="material-icons" >menu</i></a>
         </div>
         <div data-role="content">
             <ul id="hadmayotList" data-filter="true" data-role="listview" dir="rtl"></ul>          
@@ -167,7 +172,7 @@
 
     <!--Hadmaya Page -->
     <div data-role="page" data-theme="e" data-position="fixed" id="hadmaya">
-        <div data-role="header" data-position="fixed">
+        <div data-role="header" data-position="fixed" class="header">
             <a href="#main" data-icon="home" data-rel="back" title="Home" style="height:20px; text-align:center;" onclick="clearHadmaya()"></a>
             <h1><img src="Images/RetterLogo.png" style="height:50px;" /></h1>
         </div>
@@ -178,6 +183,7 @@
        
     </div><!--/Hadmaya page-->
     <div id="audioDiv" style="position:fixed; bottom:0;"></div>
+    
     <!--<div id="audioDiv" data-role="footer" data-position="fixed"></div>-->
     
 

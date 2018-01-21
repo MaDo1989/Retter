@@ -1,0 +1,21 @@
+﻿body {
+}
+
+#panel
+{
+    background-color:white;
+}
+
+.header{
+    background-color:white;
+}
+
+#logo {
+    height:50px;
+}
+
+#panelBTN {
+   position:absolute;
+    left:95%;
+   // top:50%;
+}
