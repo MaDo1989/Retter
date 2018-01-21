@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="StyleSheet.css" rel="stylesheet" />
     <script>
-
+        
 
         Hadmaya = new Object();
 
@@ -103,30 +103,29 @@
         }
 
 
-        function successHadmayaCB(results)
-        {
-            
-            results = $.parseJSON(results.d)       
-           // $("#hadmayaContent").empty();
+        function successHadmayaCB(results) {
+
+            results = $.parseJSON(results.d)
+            // $("#hadmayaContent").empty();
 
             str = "";
             //str += "<h2> " + results.Title + "</h2>    <button style='text- align:center;>Play</button>";
             str2 = "<div><h2> " + results.Title + "</h2></div>"
             $("#title").html(str2);
             //document.getElementById("hadmayaContent").innerHTML += str2;
-           // str2 = "";
-            str += "<div><h2> " + results.Title + "</h2>" + "<audio controls autoplay> <source src='" + results.Url + "' type='" + results.MediaType + "'></audio controls></div>";
+            // str2 = "";
+            str += "<div><h2> " + results.Title + "</h2>" + "<audio id='audioPlayer' controls autoplay> <source src='" + results.Url + "' type='" + results.MediaType + "'></audio controls></div>";
             //$('#hadmayaContent').html(str);
             //$.mobile.navigate("#hadmayaContent");
 
-           // var myaudio = new Audio(results.Url);
-           // myaudio.play();
+            // var myaudio = new Audio(results.Url);
+            // myaudio.play();
             $(document).on('click', '#playBTN', function () {
-                $("#audioDiv").html(str);               
+                $("#audioDiv").html(str);
             });
-           
+
             //document.getElementById("audioDiv").innerHTML = str;
-           
+
         }
 
         function play(request) {
@@ -149,43 +148,56 @@
     <!--Splash screen page  -->
     <!--<div data-role="page" data-theme="e" data-position="fixed" id="splash">
         <div data-role="content">
-            <h1> <img src="Images/RetterLogo.png" style="left:50%; top:50%;" /></h1>
-        </div>
+            <img id="splashLogo" src="Images/RetterLogo.png"/>
+            <div class="loader"></div>-->
+
+            <!--<h1 id="splashText">בטעינה</h1>-->
+            
+            
+        <!--</div>
     </div>-->
     <!--/Splash screen page  -->
+
+
     <!--Main page with titles  -->
     <div data-role="page" data-theme="e" data-position="fixed" id="main">
-        <div data-role="panel" id="panel" data-position="right" data-display="overlay">
-          
-        <a href="http://www.retter.co.il">Retter Website</a>
+        <div data-role="panel" id="panel" data-position="right" data-display="overlay" dir="rtl">
+            <div id="panelTitle"></div>
+
+            <a class="panelLinks" href="#main"><i class="material-icons">home</i>&nbsp;&nbsp;בית</a><br /><br />
+            <a class="panelLinks" href="http://www.retter.co.il/nlp"><i class="material-icons">info_outline</i>&nbsp;&nbsp;מה זה NLP?</a><br /><br />
+            <a class="panelLinks" href="http://www.retter.co.il"><i class="material-icons">insert_link</i>&nbsp;&nbsp;אתר המכללה</a><br /><br />
+            <a class="panelLinks" href="http://daf.retter.co.il/kenes2"><i class="material-icons">new_releases</i>&nbsp;&nbsp; כנסי היכרות</a><br /><br />
+            <a class="panelLinks" href="https://www.youtube.com/channel/UCcMzzfRBGAw1UDETKpHbLxA"><img src="Images/logo_youtube.png" />&nbsp;&nbsp;Youtube</a><br /><br />
+            <a class="panelLinks" href="http://www.retter.co.il"><img src="Images/logo_facebook.png" />&nbsp;&nbsp;Facebook</a><br /><br />
+
         </div><!-- /panel -->
-        <div data-role="header" data-position="fixed" class="header">  <!--Main header-->          
-            <h1><img src="Images/RetterLogo.png" id="logo"/></h1>
-            <a href="#panel" id="panelBTN"><i class="material-icons" >menu</i></a>
+        <div data-role="header" data-position="fixed" class="header">
+            <!--Main header-->
+            <h1><img src="Images/RetterLogo.png" id="logo" /></h1>
+            <a href="#panel" id="panelBTN"><i class="material-icons">menu</i></a>
         </div>
         <div data-role="content">
-            <ul id="hadmayotList" data-filter="true" data-role="listview" dir="rtl"></ul>          
-        </div><!-- /content -->  
+            <ul id="hadmayotList" data-filter="true" data-role="listview" dir="rtl"></ul>
+        </div><!-- /content -->
         <!--<div data-role="footer" data-position="fixed" id="audioDiv" data-id="audioFooter"></div>-->
     </div><!--/Main page with titles  -->
-
-
     <!--Hadmaya Page -->
     <div data-role="page" data-theme="e" data-position="fixed" id="hadmaya">
         <div data-role="header" data-position="fixed" class="header">
-            <a href="#main" data-icon="home" data-rel="back" title="Home" style="height:20px; text-align:center;" onclick="clearHadmaya()"></a>
+            <a id="homeBTN" href="#main" onclick="clearHadmaya()"><i class="material-icons">home</i></a>
             <h1><img src="Images/RetterLogo.png" style="height:50px;" /></h1>
         </div>
         <div data-role="content" id="hadmayaContent">
             <div id="title"></div>
             <button id="playBTN">Play</button>
         </div><!-- /content -->
-       
+
     </div><!--/Hadmaya page-->
-    <div id="audioDiv" style="position:fixed; bottom:0;"></div>
-    
+    <div id="audioDiv"></div>
+
     <!--<div id="audioDiv" data-role="footer" data-position="fixed"></div>-->
-    
+
 
 
 </body>

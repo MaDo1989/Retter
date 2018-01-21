@@ -1,9 +1,81 @@
-﻿body {
+﻿#audioDiv {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    position:fixed;
+    bottom:0;
+
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#panelTitle {
+  height:200px;
+  width:100%;
+    background-image: url('Images/retterbanner.jpg');
+    padding:0px;
+    margin:0px;
+    border:0px;
+}
+
+.panelLinks {
+    padding: 50px;
+    text-decoration:none;
+}
+.loader {
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid #3498db;
+    width: 100px;
+    height: 100px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+   margin-top:5%;
+margin-left:auto;
+margin-right:auto;
+display:block;
+}
+
+#audioPlayer{
+    width:100%;   
+}
+
+#splashLogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+padding:5%; 
+}
+
+#splashText{
+text-align:center;
+padding:10%;
+
 }
 
 #panel
 {
     background-color:white;
+    width:50%;
 }
 
 .header{
@@ -17,5 +89,9 @@
 #panelBTN {
    position:absolute;
     left:95%;
-   // top:50%;
+   /*top:50%;*/
+}
+
+a{
+    color:black;
 }
