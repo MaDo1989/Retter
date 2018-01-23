@@ -89,7 +89,8 @@ padding:10%;
 
 #panelBTN {
    position:absolute;
-    left:95%;
+    /*left:95%;*/
+    
    /*top:50%;*/
 }
 
