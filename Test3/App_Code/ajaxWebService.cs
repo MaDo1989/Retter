@@ -42,9 +42,9 @@ public class ajaxWebService : System.Web.Services.WebService
             string audioUrl = item.Links[1].Uri.ToString();
             string type = item.Links[1].MediaType;
             // Hadmaya h = new Hadmaya(title, uri);
-            Hadmaya h = new Hadmaya(title, audioUrl, type);
+          //  Hadmaya h = new Hadmaya(title, audioUrl, type); //
 
-            list.Add(h);
+            //list.Add(h);
         }
         // create a json serializer objetct
         JavaScriptSerializer js = new JavaScriptSerializer();
@@ -95,7 +95,7 @@ public class ajaxWebService : System.Web.Services.WebService
                 string audioUrl = item.Links[1].Uri.ToString();
                 string type = item.Links[1].MediaType;
                 // Hadmaya h = new Hadmaya(title, uri);
-                h = new Hadmaya(title, audioUrl, type);
+               // h = new Hadmaya(title, audioUrl, type);
                 //list.Add(h);
             }
         }
@@ -104,5 +104,37 @@ public class ajaxWebService : System.Web.Services.WebService
         // serialize to string
         string jsonString = js.Serialize(h);
         return jsonString;
+    }
+
+    /////////////////////////////////////////////////////////////////
+    [WebMethod]
+    [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+    public string getAllImagries()
+    {
+        List<Hadmaya> list = new List<Hadmaya>();
+        string url = "http://rss.castbox.fm/everest/6ec1c29ba42448d4b3ea0ce298f4a82b.xml";
+        XmlReader reader = XmlReader.Create(url);
+        SyndicationFeed feed = SyndicationFeed.Load(reader);
+        reader.Close();
+        foreach (SyndicationItem item in feed.Items)
+        {
+            string title = item.Title.Text;
+            // string uri = item.Links[0].Uri.ToString() + "embed";
+            string audioUrl = item.Links[0].Uri.ToString();
+            string type = item.Links[0].MediaType;
+            //string image=item.
+            string description = item.Summary.Text;
+            string publishDate = item.PublishDate.Date.ToShortDateString();
+            // Hadmaya h = new Hadmaya(title, uri);
+            Hadmaya h = new Hadmaya(title, audioUrl, type,description,publishDate);
+            
+            list.Add(h);
+        }
+        // create a json serializer objetct
+        JavaScriptSerializer js = new JavaScriptSerializer();
+        // serialize to string
+        string jsonString = js.Serialize(list);
+        return jsonString;
+
     }
 }

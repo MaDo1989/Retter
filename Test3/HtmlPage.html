@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>-->
+    <script src="JS/AjaxCalls.js"></script>
+    <script>
+        //$(document).ready(getXml(successXmlCB, errorXmlCB));
+
+        $(document).ready(xmlReader());
+        //{
+
+       
+            //$.get("http://rss.castbox.fm/everest/6ec1c29ba42448d4b3ea0ce298f4a82b.xml", function (data) {
+            //    $(data).find("item").each(function () { // or "item" or whatever suits your feed
+            //        var el = $(this);
+
+            //        console.log("------------------------");
+            //        console.log("title      : " + el.find("title").text());
+            //        console.log("author     : " + el.find("author").text());
+            //        console.log("description: " + el.find("description").text());
+            //    });
+            //});
+        //});
+       
+
+        function successXmlCB(results) {
+            results = $.parseJSON(results.d);
+            var a = "";
+            document.getElementById("demo").innerHTML += "Title: " + results[0].Title + "\nDescription: " + results[0].Description + "\nImgUrl: " + results[0].ImgUrl + "\nMedia: " + results[0].MediaType + "\nDate: " + results[0].PublishDate + "\nUrl: " + results[0].Url;
+
+            
+        }
+
+        function errorXmlCB(e) {
+            alert("I caught the exception : failed in getXml \n The exception message is : " + e.responseText);
+
+        }
+    </script>
+</head>
+<body>
+    <p id="demo"></p>
+</body>
+</html>

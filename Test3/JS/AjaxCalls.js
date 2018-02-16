@@ -42,3 +42,26 @@ function getHadmayaById(request, successHadmayaCB, errorHdamayaCB) {
         error: errorHdamayaCB
     }) // end of ajax call
 }
+    function getXml(successXmlCB, errorXmlCB) {
+        //var dataString = JSON.stringify(request);
+
+        $.ajax({ // ajax call starts
+            url: 'ajaxWebService.asmx/getAllImagries',   // server side web service method
+           // data: dataString,                          // the parameters sent to the server
+            type: 'POST',                              // can be also GET
+            dataType: 'json',                          // expecting JSON datatype from the server
+            contentType: 'application/json; charset = utf-8', // sent to the server
+            success: successXmlCB,           // data.d id the Variable data contains the data we get from serverside
+            error: errorXmlCB
+        }) // end of ajax call
+}
+
+function xmlReader(successXmlCB, errorXmlCB) {
+    $.ajax({
+        type: 'GET',
+        url: 'castbox.xml',
+        dataType: 'xml',
+        success: successXmlCB,           // data.d id the Variable data contains the data we get from serverside
+        error: errorXmlCB
+    });
+}

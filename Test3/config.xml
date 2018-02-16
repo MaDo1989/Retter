@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "il.co.retter.imagery"
+    versionCode = "1"
+    version     = "1.0.0" >
+
+<!-- versionCode is optional and Android only -->
+
+  <name>Retter - Guided Imagery</name>
+
+  <description>
+      An example for phonegap build docs.
+  </description>
+
+  <author href="https://build.phonegap.com" email="support@phonegap.com">
+    
+  </author>
+  <access origin="http://www.retter.co.il"/>
+  <access origin="http://proj.ruppin.ac.il/bgroup54/test2/tar3/ajaxwebservice.asmx"/>
+  <allow-navigation href="http://*.jquerymobile.com"/>
+  <allow-navigation href="http://*.jquery.com"/>
+      <access origin="*"/>
+    <access origin="code.jquery.com" subdomains="true" />
+    <allow-navigation href="*://*.code.jquery.com/*" />
+  <plugin name="cordova-plugin-inappbrowser" source="npm" spec="2.0.1"/>
+  <plugin name="cordova-plugin-whitelist" source="npm"/>
+
+</widget>

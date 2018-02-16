@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:castbox="http://castbox.fm/dtds/podcast-1.0.dtd"
+     version="2.0">
+    <channel>
+        <atom:link href="http://rss.castbox.fm/6ec1c29ba42448d4b3ea0ce298f4a82b.xml" type="application/rss+xml" rel="self"/>
+        <copyright>CastBox</copyright>
+        <link>
+        http://castbox.fm</link>
+        <language>en-us</language>
+
+        <title>Testing</title>
+        <description>ניסיון ניסיון ניסיון</description>
+        <castbox:uid>711aefb94c5a4d6ab29afc8f6c128198</castbox:uid>
+        <castbox:pid>1176709</castbox:pid>
+        <castbox:type></castbox:type>
+
+        <itunes:summary>ניסיון ניסיון ניסיון</itunes:summary>
+        <itunes:subtitle></itunes:subtitle>
+        <itunes:author>Matan Doron</itunes:author>
+
+        <itunes:owner>
+            <itunes:email>mtndoron@gmail.com</itunes:email>
+        </itunes:owner>
+
+        <itunes:image href="https://s3.castbox.fm/0a/f3/c1/bd5a1644cb92cb638af0a2aa01.png"/>
+        <itunes:keywords>Health &amp; Medicine,Religion &amp; Spirituality</itunes:keywords>
+        
+        <itunes:category text="Health &amp; Medicine"/>
+        
+        <itunes:category text="Religion &amp; Spirituality"/>
+        
+        <itunes:explicit>no</itunes:explicit>
+
+        
+        <item>
+            <title>לידה</title>
+            <description>דימיון מודרך ללידה</description>
+            <itunes:summary>דימיון מודרך ללידה</itunes:summary>
+            <itunes:image href="https://s3.castbox.fm/40/d6/b1/7fec4944249065b214de74e49a.png"/>
+            <enclosure url="https://s3.castbox.fm/b9/6c/ef/d7cb1b4b9f880fc854dfeea5da.mp3" type="audio/mp3" length="14076933"/>
+            <itunes:duration>00:09:46</itunes:duration>
+            <guid>album-6ec1c29ba42448d4b3ea0ce298f4a82b-29a7ae5491da45bfbbb6798123605023</guid>
+            <pubDate>Fri, 16 Feb 2018 07:01:21 +0000</pubDate>
+            <author></author>
+            <author_picture></author_picture>
+            <castbox:tid>66008131</castbox:tid>
+            <itunes:explicit>no</itunes:explicit>
+        </item>
+        
+    </channel>
+</rss>
